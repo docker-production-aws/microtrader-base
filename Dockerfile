@@ -4,7 +4,8 @@ LABEL application=microtrader
 
 # Install system dependencies
 RUN echo "@testing http://nl.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
-    apk add --update --no-cache bash curl confd@testing
+    apk add --update --no-cache bash curl confd@testing py2-pip && \
+    pip install awscli
 
 # Create vertx user
 RUN mkdir -p /app/conf && \
