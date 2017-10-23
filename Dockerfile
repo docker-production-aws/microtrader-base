@@ -3,7 +3,17 @@ MAINTAINER Justin Menga <justin.menga@gmail.com>
 LABEL application=microtrader
 
 # Install system dependencies
-RUN apk add --update --no-cache bash curl 
+RUN apk add --update --no-cache bash curl
+
+# Create vertx user
+RUN mkdir /app && \
+    addgroup -g 1000 vertx && \
+    adduser -u 1000 -G vertx -D vertx && \
+    chown -R vertx:vertx /app
+
+# Set default user
+USER vertx
+WORKDIR /app
 
 # Set entrypoint and default command arguments
 COPY cluster.xml /app/conf/cluster.xml
