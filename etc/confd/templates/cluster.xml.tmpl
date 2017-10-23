@@ -11,13 +11,13 @@
   </properties>
 
   <group>
-    <name>microtrader</name>
-    <password>password</password>
+    <name>{{getv "/cluster/group/name" "microtrader"}}</name>
+    <password>{{getv "/cluster/group/password" "password"}}</password>
   </group>
 
   <management-center enabled="false">http://localhost:8080/mancenter</management-center>
   <network>
-    <port auto-increment="true" port-count="10">5701</port>
+    <port auto-increment="true" port-count="10000">5701</port>
     <outbound-ports>
       <!--
       Allowed port range when connecting to other nodes.
@@ -26,10 +26,21 @@
       <ports>0</ports>
     </outbound-ports>
     <join>
+      {{- if eq (toLower (getv "/cluster/aws/enabled" "false")) "true" }}
+      <multicast enabled="false"/>
+      <tcp-ip enabled="false"/>
+      <aws enabled="true">
+        <region>{{getv "/cluster/aws/region" "us-west-2"}}</region>
+        <iam-role>{{getv "/cluster/aws/iam/role" "DEFAULT"}}</iam-role>
+        <tag-key>{{getv "/cluster/aws/tag/key" "hazelcast:group"}}</tag-key>
+        <tag-value>{{getv "/cluster/aws/tag/value" "microtrader"}}</tag-value>
+      </aws>
+      {{- else }}
       <multicast enabled="true"/>
       <tcp-ip enabled="false">
           <interface>127.0.0.1</interface>
       </tcp-ip>
+      {{- end }}
     </join>
     <interfaces enabled="false">
       <interface>10.10.1.*</interface>
