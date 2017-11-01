@@ -14,7 +14,7 @@ $ docker build -t <org-name>/microtrader-base .
 
 The following provides links to commits in this repository that represent important milestones in the course material:
 
-- Customizing ECS Container Instances - this commit represents the state of the repository once you have completed the Customizing ECS Container Instances module.
+- [Customizing ECS Container Instances](https://github.com/docker-production-aws/microtrader-base/tree/customizing-ecs-container-instances) - this commit represents the state of the repository once you have completed the Customizing ECS Container Instances module.
 
 ## Errata
 
