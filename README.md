@@ -14,9 +14,9 @@ $ docker build -t <org-name>/microtrader-base .
 
 This repository contains two branches:
 
-- [`master`](https://github.com/docker-production-aws/packer-ecs/tree/master) - represents the initial starting state of the repository as viewed in the course.
+- [`master`](https://github.com/docker-production-aws/microtrader-base/tree/master) - represents the initial starting state of the repository as viewed in the course.
 
-- [`final`](https://github.com/docker-production-aws/packer-ecs/tree/final) - represents the final state of the repository after completing all configuration tasks as described in the course material.
+- [`final`](https://github.com/docker-production-aws/microtrader-base/tree/final) - represents the final state of the repository after completing all configuration tasks as described in the course material.
 
 > The `final` branch is provided as a convenience in the case you get stuck, or want to avoid manually typing out large configuration files.  In most cases however, you should attempt to configure this repository by following the course material.
 
